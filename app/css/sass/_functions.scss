@@ -1,0 +1,89 @@
+// http://davidwalsh.name/rem-px-browser-function-sass
+// http://hugogiraudel.com/2013/08/12/sass-functions/
+
+
+// Strip unit from a number
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+// Grid function (if set to true, outputs px size - eg for max-width)
+@function grid($cols,$to-px:false) {
+  $result: '';
+  @if ($to-px == false) {
+    $result: ($cols / $columns) * 100%;
+  }
+  @else {
+    $result: round(($max-width / $columns) * $cols);
+  }
+
+  @return $result;
+}
+
+// Convert rem into px for old IE
+@function rem($val) {
+  $rtn: '';
+  @if ($ie) {
+    $rtn: $val * $pixel-base;
+  } @else {
+    $rtn: $val;
+  }
+  @return $rtn;
+  
+}
+
+// Convert rgba to hex for old IE
+@function ep-rgba($color, $opacity: 0.3) {
+    $rtn-color: '';
+
+    @if ($ie) {
+      $rtn-color: lighten($color, (1 - $opacity) * 100%);
+    } @else {
+      $rtn-color: rgba($color, $opacity);
+    }
+    @return $rtn-color;
+}
+
+// Convert svg to png for old IE
+@function svg-png($location,$icon:false) {
+  $result: '';
+
+  // if $icon argument is provided (eg in a loop)
+  @if ($icon) {
+    @if ($ie) {
+      $result: $location + $icon + '.png';
+    }
+    @else {
+      $result: $location + $icon + '.svg';
+    }
+  }
+  // if just one icon is provided
+  @else {
+    @if ($ie) {
+      $result: $location + '.png';
+    }
+    @else {
+      $result: $location + '.svg';
+    }
+  }
+
+
+  @return $result;
+}
+
+// Reverse order of list - http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+@function reverse($list, $recursive: false) {
+   $result: ();
+
+   @for $i from length($list)*-1 through -1 {
+      @if type-of(nth($list, abs($i))) == list and $recursive {
+        $result: append($result, reverse(nth($list, abs($i)), $recursive));
+      }
+
+      @else {
+        $result: append($result, nth($list, abs($i)));
+      }
+   }
+
+   @return $result;
+}

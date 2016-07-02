@@ -1,0 +1,41 @@
+// Optional styles
+@if ($js-breakpoints) {
+  // For importing breakpoints into JS - https://www.lullabot.com/blog/article/importing-css-breakpoints-javascript
+  body:before {
+    display: none;
+  }
+  $new-break:reverse($breakpoints);
+  @each $name, $size in $new-break {
+    @media screen and ( max-width: ( $size - 1 ) + 'px' ) {
+      body:before {
+        content:"#{$name}";
+      }
+    }
+  }
+  /*@media screen and ( min-width: map-get($breakpoints, lrg) + 'px') {
+    body:before {
+      content: "desktop";
+    }
+  }*/
+}
+@if ($sticky-footer) {
+  // Sticky footer
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    display: table;
+    width: 100%; // max-width set on the grid
+    margin:auto;
+  }
+  header,
+  main,
+  footer {
+    display: table-row;
+    height: 1px;
+  }
+  main {
+    height: 100%;
+  }
+}

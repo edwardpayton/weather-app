@@ -1,0 +1,63 @@
+// Semantic Inline Block CSS Grid
+
+
+// - Supports IE8 and above
+// - No floats, no clearfix hacks
+// - Unlimited width and number of columns
+// - Use with or without row and item gutters
+
+
+// Grid Rows
+%grid-row {
+  font-size: 0;
+  width:100%;
+  max-width: $max-width;
+  margin: auto;
+}
+.grid-row {
+  @extend %grid-row;
+}
+%grid-row-gutter {
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+}
+
+// Nested Grid Rows
+%grid-row-nested {
+  margin: auto;
+}
+.grid-row .grid-row {
+  @extend %grid-row-nested;
+}
+
+%grid-row-nested-gutter {
+  padding:0;
+}
+
+// Grid items
+%grid-item {
+  font-size: $pixel-base;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+.grid-item {
+  @extend %grid-item;
+}
+@mixin grid-item-gutters {
+   // Mixin because of Sass's inability to extend inside a media query
+  padding-left: $gutter / 2;
+  padding-right:  $gutter / 2;
+  &:first-child {
+    padding-left:0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+
+// HTML Structure
+// div.grid-row          The grid row
+//   div.grid-i-<num>    The grid item(s)
+//     div.grid-row      Nested grid row

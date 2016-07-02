@@ -1,0 +1,110 @@
+@import 'variables';
+@import 'config';
+
+@import 'functions';
+@import 'mixins';
+@import 'extends';
+
+@import 'my-reset';
+@import 'optional-styles';
+
+@import 'grid';
+@import 'grid-extras';
+
+//@import 'cookies';
+
+/* Start of my styles */
+html {
+  font-family:$font-1-fam;
+}
+
+.header,
+.main,
+.footer {
+  &__wrapper {
+    @extend %grid-row;
+  }
+}
+
+.header {
+  &__wrapper {
+    text-align: center;
+  }
+  &__logo,
+  &__menu {
+    @extend %grid-item;
+
+  }
+  &__logo {
+    font-size: 2rem;
+  }
+  &__menu {
+    a {
+      font-size: 1.6rem;
+      padding: 5px;
+      margin: 5px;
+    }
+  }
+}
+
+main {}
+
+.footer__wrapper {
+  &__wrapper {
+
+  }
+}
+
+.weather {
+  &__wrapper {
+    
+  }
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+  &__title {
+    font-size: 2.5rem;
+  }
+  &__list {
+
+  }
+  &__listItem {
+    // This becomes .item__* below
+
+  }
+}
+
+.forecast {
+  &__wrapper {
+    @extend %grid-row;
+    
+    @include mq(min,sml) {
+      padding: 5px 20px;
+    }
+
+  }
+  &__date,
+   &__description,
+   &__temp {
+    @extend %grid-item;
+    vertical-align: middle;
+    @include mq(min,sml) {
+      width: auto; // sit inline
+    }
+  }
+  &__date {
+    font-size: 2rem;
+    @include mq(min,sml) {
+      min-width: grid(5);
+    }
+  }
+  &__description {
+
+  }
+  &__temp {
+
+  }
+
+
+}
