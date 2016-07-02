@@ -1,0 +1,34 @@
+<section class="weather__wrapper" ng-controller="WeatherController">
+  <div class="weather__inner" ng-cloak>
+    <h1 class="weather__title">{{forecast.city.name || 'Loading'}}</h1>
+    <div class="weather__list">
+      <div class="weather__listItem" ng-repeat="x in forecast.list | limitTo:5">
+        <weather-block day-index="forecast.list[$index]" ng-class='{today:$first}'></weather-block>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/ng-template" id="weatherTemplate.html">
+  <article class="forecast__wrapper">
+    <h3 class="forecast__date">
+      {{formatDate(dayForecast.dt) | date:'EEEE'}}
+      <small>{{formatDate(dayForecast.dt) | date:'MMM dd, y'}}</small>
+    </h3>
+    <div class="forecast__description">
+      <p>
+        {{dayForecast.weather[0].main}}
+        <small>{{dayForecast.weather[0].description}}</small>
+      </p>
+    </div>
+    <div class="forecast__temp">
+      <p>
+        {{dayForecast.temp.day | number:0}}&deg;C
+        <small>
+          <span>High: {{dayForecast.temp.max | number: 0}}&deg;C</span>
+          <span>Low: {{dayForecast.temp.min | number: 0}}&deg;C</span>
+        </small>
+      </p>
+    </div>
+  </article>
+</script>
