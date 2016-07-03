@@ -20,6 +20,7 @@ $purple: #4500cf;
 // Blue - Green
 $blue: #00F;
 $green: #008000;
+$materialBlue: #2196F3;
 
 
 // Yellow - Brown
@@ -32,6 +33,8 @@ $white: #FFF;
 $nearWhite: darken($white, 5%);
 $black: #000;
 $nearBlack: lighten($black, 5%);
+$materialGray:#AFAFAF;
+$materialGrayPale:#FAFAFA;
 
 // Other colours
 $facebook: #576FAA;
@@ -52,7 +55,7 @@ $iconMap: (
 
 
 // Fonts
-$font-1: "http://fonts.googleapis.com/css?family=Open+Sans:300";
+$font-1: "http://fonts.googleapis.com/css?family=Open+Sans:400";
 @if(global-variable-exists(font-1)) {
     @import url($font-1);
     $font-1-fam: 'Open Sans', sans-serif !global;

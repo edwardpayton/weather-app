@@ -15,30 +15,42 @@
 
 /* Start of my styles */
 html {
-  font-family:$font-1-fam;
+  font-family: $font-1-fam;
+  font-weight: $font-1-reg;
 }
 
 .header,
 .main,
 .footer {
   &__wrapper {
-    @extend %grid-row;
+    // @extend %grid-row;
   }
 }
 
 .header {
-  &__wrapper {
-    text-align: center;
+  &__inner {
+    padding: 18px 20px;
+    background: $materialBlue;
+    @extend %grid-row;
+    a {
+      color: $white;
+      text-decoration:none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   &__logo,
   &__menu {
     @extend %grid-item;
-
+    vertical-align: middle;
+    width:50%;
   }
   &__logo {
     font-size: 2rem;
   }
   &__menu {
+    text-align:right;
     a {
       font-size: 1.6rem;
       padding: 5px;
@@ -47,7 +59,10 @@ html {
   }
 }
 
-main {}
+main {
+  background: $materialGrayPale;
+  padding: 0 10px;
+}
 
 .footer__wrapper {
   &__wrapper {
@@ -61,10 +76,24 @@ main {}
   }
   &__inner {
     max-width: $max-width;
-    margin: 0 auto;
+    margin: 40px auto 20px;
+  }
+  &__titleBar {
+    @extend %grid-row;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: $white;
+    border-bottom: 1px solid $materialGrayPale;
   }
   &__title {
+    @extend %grid-item;
+    width: auto;
     font-size: 2.5rem;
+    small {
+      font-size: 1.4rem;
+      color: $materialGray;
+      display: block;
+    }
   }
   &__list {
 
@@ -75,36 +104,85 @@ main {}
   }
 }
 
+.form {
+  &__wrapper {
+    @extend %grid-item;
+    width: auto;
+    float: right;
+    input {
+      font-size: 1.6rem;
+      background: transparent;
+      height:40px;
+    }
+    input[type="text"] {
+      border: 1px solid mix($white,$materialBlue,75%);
+      padding: 3px 5px;
+    }
+    input[type="submit"] {
+      border: none;
+      background: mix($white,$materialBlue,75%);
+      color: mix($black,$materialBlue,10%); // text slightly darker version of blue for readability
+      &:hover {
+        background: $materialBlue;
+        color: $white;
+      }
+      &:active {
+        background: mix($white,$materialBlue,25%);
+      }
+    }
+  }
+}
+
 .forecast {
   &__wrapper {
     @extend %grid-row;
-    
+    max-width: grid(10,true); // 
+    background: $white;
+    border-bottom: 1px solid $materialGrayPale;
+
     @include mq(min,sml) {
-      padding: 5px 20px;
+      padding: 10px;
     }
 
+    // First section
+    &--today {
+      max-width: none;
+      margin-bottom: 10px;
+    }
   }
   &__date,
-   &__description,
-   &__temp {
+  &__description,
+  &__temp {
     @extend %grid-item;
     vertical-align: middle;
     @include mq(min,sml) {
-      width: auto; // sit inline
+      width: grid(4); // 1/3 wide
     }
   }
-  &__date {
+  &__date,
+  &__description,
+  &__temp {
     font-size: 2rem;
-    @include mq(min,sml) {
-      min-width: grid(5);
+    small {
+      font-size: 1.4rem;
+      color: $materialGray;
+      display: block;
     }
+  }
+
+  &__description,
+  &__temp {
+    font-size: 2rem;
   }
   &__description {
-
+    i,
+    p {
+      display: inline-block;
+    }
+    i {
+      font-size: 4rem;
+      margin-right: 10px;
+    }
   }
-  &__temp {
-
-  }
-
 
 }

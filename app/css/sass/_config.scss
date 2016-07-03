@@ -1,6 +1,6 @@
 // Settings
 $ie:false !default; // Old IE mode - for rem function, overridden in style-ie.scss
-$js-breakpoints: true; // adds breakpoint names to body:before (to be used in JS)
+$js-breakpoints: false; // adds breakpoint names to body:before (to be used in JS)
 $sticky-footer: true;
 
 // Box sizing

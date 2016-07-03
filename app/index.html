@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Weather Angular App by Edward Payton</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/owfont-regular.min.css">
 </head>
 <body>
   <header class="header__wrapper" role="navigation">
-    <a class="header__logo" href="#">Open Weather Angular App</a>
-    <nav class="header__menu">
-      <a href="#/">Weather</a>
-      <a href="#/about-me">About Me</a>
-    </nav>
+    <div class="header__inner">
+      <h1 class="header__logo">
+        <a href="#/">Open Weather Angular App</a>
+      </h1>
+      <nav class="header__menu">
+        <a href="#/">Weather</a>
+        <a href="#/about-me">About Me</a>
+      </nav>
+    </div>
   </header>
   <main class="main__wrapper" ng-view></main>
   <footer class="footer__wrapper"></footer>
