@@ -4,7 +4,10 @@
 ### To install and run
 
 ```
+$ git clone https://github.com/edwardpayton/weather-app.git weather-app
+$ cd weather-app
 $ npm install
+$ npm start
 ```
 
 Then visit http://localhost:8000
