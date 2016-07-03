@@ -20,18 +20,21 @@ html {
 }
 
 .header,
-.main,
 .footer {
-  &__wrapper {
-    // @extend %grid-row;
+  &__inner {
+    padding: 18px 20px;
+    @extend %grid-row;
+    p  {
+      font-size: 1.6rem;
+      color: $materialBlue;
+    }
   }
 }
 
 .header {
   &__inner {
-    padding: 18px 20px;
     background: $materialBlue;
-    @extend %grid-row;
+    box-shadow: 0 5px 5px rgba($black,0.1);
     a {
       color: $white;
       text-decoration:none;
@@ -44,19 +47,33 @@ html {
   &__menu {
     @extend %grid-item;
     vertical-align: middle;
-    width:50%;
+    text-align: center;
   }
   &__logo {
     font-size: 2rem;
   }
   &__menu {
-    text-align:right;
     a {
       font-size: 1.6rem;
       padding: 5px;
       margin: 5px;
     }
   }
+
+  // Header media queries
+  @include mq(min,sml){
+    &__logo,
+    &__menu {
+      width:50%;
+    }
+    &__logo {
+      text-align: left;
+    }
+    &__menu {
+      text-align: right;
+    }
+  }
+
 }
 
 main {
@@ -64,16 +81,15 @@ main {
   padding: 0 10px;
 }
 
-.footer__wrapper {
-  &__wrapper {
-
+.footer {
+  &__wrapper {}
+  &__inner {
+    border-top: 1px solid mix($black,$materialGrayPale,5%);
   }
 }
 
 .weather {
-  &__wrapper {
-    
-  }
+  &__wrapper {}
   &__inner {
     max-width: $max-width;
     margin: 40px auto 20px;
@@ -82,6 +98,7 @@ main {
     @extend %grid-row;
     padding: 10px;
     margin-bottom: 10px;
+    overflow: auto; // for floated form 
     background: $white;
     border-bottom: 1px solid $materialGrayPale;
   }
@@ -89,19 +106,19 @@ main {
     @extend %grid-item;
     width: auto;
     font-size: 2.5rem;
+    text-align: center;
     small {
       font-size: 1.4rem;
       color: $materialGray;
       display: block;
     }
-  }
-  &__list {
 
+    @include mq(min,sml) {
+      text-align: left;
+    }
   }
-  &__listItem {
-    // This becomes .item__* below
-
-  }
+  &__list {}
+  &__listItem {}
 }
 
 .form {
@@ -138,35 +155,25 @@ main {
     @extend %grid-row;
     max-width: grid(10,true); // 
     background: $white;
-    border-bottom: 1px solid $materialGrayPale;
-
-    @include mq(min,sml) {
-      padding: 10px;
-    }
-
-    // First section
-    &--today {
-      max-width: none;
-      margin-bottom: 10px;
-    }
+    border-bottom: 2px solid $materialGrayPale;
+    padding: 10px;
   }
   &__date,
   &__description,
   &__temp {
     @extend %grid-item;
     vertical-align: middle;
-    @include mq(min,sml) {
-      width: grid(4); // 1/3 wide
-    }
-  }
-  &__date,
-  &__description,
-  &__temp {
     font-size: 2rem;
     small {
       font-size: 1.4rem;
       color: $materialGray;
-      display: block;
+      @include mq(min,sml) {
+        display: block;
+      }
+    }
+
+    @include mq(min,sml) {
+      width: grid(4); // 1/3 wide
     }
   }
 
@@ -175,9 +182,11 @@ main {
     font-size: 2rem;
   }
   &__description {
+    padding: 10px 0;
     i,
     p {
       display: inline-block;
+      vertical-align: middle;
     }
     i {
       font-size: 4rem;
@@ -185,4 +194,53 @@ main {
     }
   }
 
+  // First section
+  &__wrapper--today {
+    margin-bottom: 10px;
+    text-align: center;
+
+    .forecast__date,
+    .forecast__description,
+    .forecast__temp {
+      display: block;
+      width: 100%;
+      font-size: 3rem;
+      small {
+        font-size: 2rem;
+        display: inline-block;
+      }
+    }
+    .forecast__description {
+      padding: 10px 0;
+      i {
+        display: block;
+        font-size: 25rem;
+        margin-bottom: -30px;
+      }
+    }
+  }
+}
+
+.about {
+  &__wrapper {
+    max-width: $max-width;
+    margin: 40px auto 20px;
+    padding: 10px;
+    background: $white;
+    p,
+    ul {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    em {
+      font-style: normal;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none outside none;
+    }
+    a {
+      color: $materialBlue;
+    }
+  }
 }

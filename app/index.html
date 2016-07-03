@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Weather Angular App by Edward Payton</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/owfont-regular.min.css">
 </head>
 <body>
@@ -19,8 +19,12 @@
       </nav>
     </div>
   </header>
-  <main class="main__wrapper" ng-view></main>
-  <footer class="footer__wrapper"></footer>
+  <main class="main__wrapper" role="main" ng-view></main>
+  <footer class="footer__wrapper" role="contentinfo">
+    <div class="footer__inner">
+      <p>Open Weather Angular App by Edward Payton</p>
+    </div>
+  </footer>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>

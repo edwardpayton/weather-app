@@ -71,12 +71,6 @@ angular.module('WeatherModule', ['ngResource'])
     controller: ['$scope', function($scope) {
       // Prettify the date
 
-      $scope.firstThing = function() {
-        if($first) {
-          return 'abc';
-        }
-      }
-
       $scope.formatDate = function(time) {
         var theDate = new Date(time * 1000);
         return theDate;
