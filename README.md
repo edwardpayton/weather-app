@@ -1,5 +1,5 @@
 # Open Weather Angular App by Edward Payton
-## angular-seed — the seed for AngularJS apps
+## Based on angular-seed — the seed for AngularJS apps
 
 ### To install and run
 
