@@ -55,7 +55,7 @@ $iconMap: (
 
 
 // Fonts
-$font-1: "http://fonts.googleapis.com/css?family=Open+Sans:400";
+$font-1: "https://fonts.googleapis.com/css?family=Open+Sans:400";
 @if(global-variable-exists(font-1)) {
     @import url($font-1);
     $font-1-fam: 'Open Sans', sans-serif !global;
