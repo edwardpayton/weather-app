@@ -11,10 +11,12 @@
           <input ng-click="citySearch(city)" type="submit" value="Search">
       </form>
     </div>
-
     <div class="weather__list">
       <div class="weather__listItem" ng-repeat="x in forecast.list | limitTo:5">
         <weather-block day-index="forecast.list[$index]" ng-class="{'forecast__wrapper--today':$first}"></weather-block>
+      </div>
+      <div class="weather__error" ng-show="!forecast.list" ng-cloak>
+        <p class="weather__githubPagesError">If you are seeing this message on Github pages, it is because is the Open Weather API is not served on a HTTPS url and so the script is blocked. To load the weather info you must allow un-secure scripts in your browser. Instructions can be found here for <a href="https://support.google.com/chrome/answer/1342714?hl=en-GB" target="_blank">Chrome</a> and <a href="https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/" target="_blank">Firefox</a>.</p>
       </div>
     </div>
   </div>
