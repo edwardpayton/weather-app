@@ -1,0 +1,65 @@
+// Media Query Breakpoints (Enter PX sizes, mixin converts to EM)
+$breakpoints: (
+  xsml: 450,
+  sml:  550,
+  mid:  700
+);
+
+// Media Query Tweak Sizes - E.g for making small changes at intermediate breakpoints
+$tweak800: 800;
+
+
+
+// Colours
+$temp: #F0F; // e.g use as icon placeholder
+
+// Red - Purple
+$red: #F00;
+$purple: #4500cf;
+
+// Blue - Green
+$blue: #00F;
+$green: #008000;
+$materialBlue: #2196F3;
+
+
+// Yellow - Brown
+$yellow: #FF0;
+$peru: #CD853F;
+
+
+// B+W - light to dark
+$white: #FFF;
+$nearWhite: darken($white, 5%);
+$black: #000;
+$nearBlack: lighten($black, 5%);
+$materialGray:#AFAFAF;
+$materialGrayPale:#E4E4E4;
+
+// Other colours
+$facebook: #576FAA;
+$twitter: #55ACEE;
+
+
+
+// Icon maps
+$iconMap: (
+  "one","two","three","four"
+);
+// @each $icon in $iconMap {
+//  &.-#{$icon} {
+//    --Styles--
+//  }
+// }
+
+
+
+// Fonts
+$font-1: "http://fonts.googleapis.com/css?family=Open+Sans:400";
+@if(global-variable-exists(font-1)) {
+    @import url($font-1);
+    $font-1-fam: 'Open Sans', sans-serif !global;
+    $font-1-light: null !global;
+    $font-1-reg: 300 !global;
+    $font-1-bold: null !global;
+}

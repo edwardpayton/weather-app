@@ -1,0 +1,91 @@
+// Grid Additional Classes
+
+// Include this with grid-semantic to build the full set of grid classes.
+
+// The extra classes gives you:
+// - grid row gutters             .grid-row.-row-gutter
+// - no max width on grid rows    .grid-row.-no-max-width
+// - nested grid rows             .grid-row .grid-row
+// - grid item widths             .grid-i-3 { width: 25%; }
+// - grid item gutters            .grid-row.-item-gutter > *        optional
+// - push grid items              .push-3 { left: 25%; }            optional
+// - pull grid items              .pull-3 { left: -25%; }           optional
+
+
+// TODO
+// @extend %grid-item-gutters cant be called from inside media query
+// As above for other extends (as errors arise)
+//
+@if ($include-grid-row-classes) {
+  // Grid Rows
+  .-row-gutter {
+    @extend %grid-row-gutter;
+  }
+  .-max-width-none {
+    max-width:none;
+  }
+  .grid-row .grid-row {
+    @extend %grid-row-nested-gutter;
+  }
+}
+
+@if ($include-grid-i-classes) {
+  // Grid items
+  @for $i from 1 through $columns {
+    .grid-i-#{$i} {
+      @extend %grid-item; // in grid-default.scss
+    }
+  }
+}
+
+$mq-size: map-get($breakpoints, $grid-min-width);
+@media only screen and (min-width: $mq-size + 'px') {
+
+  // Grid Items
+  @if ($include-grid-i-classes) {
+    @for $i from 1 through $columns {
+      .grid-i-#{$i} {
+        width: grid($i); // grid width function
+      }
+    }
+  }
+
+  // Grid item gutters
+  @if ($include-grid-item-gutters) {
+    %grid-item-gutters-resp {
+      @include grid-item-gutters;
+    }
+    @for $i from 1 through $columns {
+      .-item-gutter > .grid-i-#{$i} {
+        // @extend %grid-item-gutters; // cant extend inside a media query
+        @extend %grid-item-gutters-resp;
+      }
+    }
+  }
+
+  // For Push and Pull
+  %pos-rel {
+    position: relative;
+  }
+  // Push Items - moves items left
+  @if ($include-push-classes) {
+    @for $i from 1 through $columns - 1 {
+      // IE9 + only
+      .push-#{$i}, .push-#{$i} ~ *:not([class*=push]) {
+        // A slow selector, how to improve?
+        @extend %pos-rel;
+        left: grid($i);
+      }
+    }
+  }
+  // Pull Items - moves items right
+  @if ($include-pull-classes) {
+    // .pull-X is equal to the .grid-i-X number to move the column to the start
+    @for $i from 1 through $columns {
+      .pull-#{$i}.pull-#{$i} { // Double class-name to increase pull-X specificity
+        @extend %pos-rel;
+        left: - grid($i);
+      }
+    }
+  }
+}

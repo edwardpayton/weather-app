@@ -1,0 +1,46 @@
+// Settings
+$ie:false !default; // Old IE mode - for rem function, overridden in style-ie.scss
+$js-breakpoints: false; // adds breakpoint names to body:before (to be used in JS)
+$sticky-footer: true;
+
+// Box sizing
+$box-sizing: border-box; // Border-box or content-box
+
+// Grid
+$columns: 12;
+$max-width: 800px;
+$gutter: 10px;
+
+// Root font size
+$pixel-base: 10px; // For Base 10 font sizing
+
+
+// Grid - additional
+// Breakpoint size to apply grid widths
+$grid-min-width: xsml;
+// breakpoint picked from breakpoints map in _variables.scss
+
+// Include extra grid-row classes
+$include-grid-row-classes: false;
+// .-row-gutter, .-max-width-none, nested grid-row gutters reset
+// adds ~0.25kb to compiled min size
+
+// Include grid-i-X classes
+$include-grid-i-classes: false;
+// .grid-i-X, responsive grid-i-X sizes
+// adds ~0.5kb to compiled min size
+
+// Include grid-item gutters
+$include-grid-item-gutters: false;
+// .-item-gutter (add class to .grid-row)
+// adds ~1.5kb to compiled min size
+
+// Include .push-X classes
+$include-push-classes: false;
+// .push-X
+// adds ~1kb to compiled min size
+
+// Include .pull-X classes
+$include-pull-classes: false;
+// .pull-X
+// adds ~0.5kb to compiled min size
